@@ -1,8 +1,19 @@
 const express = require("express");
 const router = express.Router();
+const fs = require("fs");
 
-router.get("/", (req, res) => {
-  res.end("Natours app running is successful!");
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/../../dev-data/data/tours-simple.json`)
+);
+
+router.get("/tours", (req, res) => {
+  res.status(200).json({
+    message: "success",
+    results: tours.length,
+    data: {
+      tours,
+    },
+  });
 });
 
 module.exports = router;
