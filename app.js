@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 });
 
 /*<------------ Public Routes ------------->*/
-app.use("/api/v1", publicRoutes);
+// app.use("/api/v1", publicRoutes);
 /*<------------ Tour Routes ------------->*/
 app.use("/api/v1/tours", tourRoutes);
 /*<------------ User Routes ------------->*/

@@ -1,13 +1,25 @@
 const { mongoose, Schema } = require("mongoose");
 
-const tourSchema = new Schema({
-  name: {
-    type: String,
+const tourSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "A tour must have a name"],
+      unique: true,
+    },
+    price: {
+      type: Number,
+      required: [true, "A tour must have a price"],
+    },
+    ratting: {
+      type: String,
+      default: 4.5,
+    },
   },
-  email: {
-    type: String,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
-const MyData = mongoose.model("users", tourSchema);
-module.exports = MyData;
+const Tour = mongoose.model("tours", tourSchema);
+module.exports = Tour;
